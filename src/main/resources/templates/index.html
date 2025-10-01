@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인 페이지</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+        
+        p {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        .features {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        .feature {
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .feature h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .calculator-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 2px solid #e9ecef;
+        }
+        
+        .calculator-section h2 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .calculator-section p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .calculator-btn {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            font-size: 1.2rem;
+            padding: 18px 35px;
+        }
+        
+        .calculator-btn:hover {
+            background: linear-gradient(45deg, #c0392b, #a93226);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>안녕하세요! 👋</h1>
+        <p>웹사이트에 오신 것을 환영합니다. 다양한 기능을 체험해보세요!</p>
+        
+        <div class="calculator-section">
+            <h2>🧮 계산기</h2>
+            <p>간편하고 직관적인 계산기를 사용해보세요!</p>
+            <a href="/calculater.html" class="btn calculator-btn">계산기 사용하기</a>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>🧮 계산기</h3>
+                <p>사칙연산 지원</p>
+            </div>
+            <div class="feature">
+                <h3>📱 반응형</h3>
+                <p>모든 기기에서 최적화</p>
+            </div>
+            <div class="feature">
+                <h3>🎨 모던 UI</h3>
+                <p>아름다운 디자인</p>
+            </div>
+            <div class="feature">
+                <h3>⌨️ 키보드 지원</h3>
+                <p>키보드로도 사용 가능</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
