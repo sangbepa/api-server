@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>회원가입 - Sangbeom Park</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center">
+  <div class="max-w-md w-full space-y-8">
+    <div>
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        회원가입
+      </h2>
+      <p class="mt-2 text-center text-sm text-gray-600">
+        또는
+        <a href="/login" class="font-medium text-indigo-600 hover:text-indigo-500">
+          로그인
+        </a>
+      </p>
+    </div>
+    <form class="mt-8 space-y-6" action="/register" method="post">
+      <div class="space-y-4">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700">이름</label>
+          <input id="name" name="name" type="text" autocomplete="name" required 
+                 class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                 placeholder="이름을 입력하세요">
+        </div>
+        
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">이메일 주소</label>
+          <input id="email" name="email" type="email" autocomplete="email" required 
+                 class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                 placeholder="이메일을 입력하세요">
+        </div>
+        
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">비밀번호</label>
+          <input id="password" name="password" type="password" autocomplete="new-password" required 
+                 class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                 placeholder="비밀번호를 입력하세요">
+        </div>
+        
+        <div>
+          <label for="confirmPassword" class="block text-sm font-medium text-gray-700">비밀번호 확인</label>
+          <input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" required 
+                 class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                 placeholder="비밀번호를 다시 입력하세요">
+        </div>
+      </div>
+
+      <div class="flex items-center">
+        <input id="agree-terms" name="agree-terms" type="checkbox" required
+               class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+        <label for="agree-terms" class="ml-2 block text-sm text-gray-900">
+          <a href="#" class="text-indigo-600 hover:text-indigo-500">이용약관</a> 및 
+          <a href="#" class="text-indigo-600 hover:text-indigo-500">개인정보처리방침</a>에 동의합니다.
+        </label>
+      </div>
+
+      <div>
+        <button type="submit" 
+                class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          회원가입
+        </button>
+      </div>
+
+      <div class="text-center">
+        <a href="/" class="text-sm text-gray-600 hover:text-gray-900">
+          ← 홈으로 돌아가기
+        </a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

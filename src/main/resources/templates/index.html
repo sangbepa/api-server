@@ -1,151 +1,313 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>메인 페이지</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .container {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-        }
-        
-        h1 {
-            color: #333;
-            margin-bottom: 1rem;
-            font-size: 2.5rem;
-        }
-        
-        p {
-            color: #666;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            margin: 10px;
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-        
-        .features {
-            margin-top: 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-        }
-        
-        .feature {
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-        }
-        
-        .feature h3 {
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-        
-        .feature p {
-            color: #666;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-        
-        .calculator-section {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            border: 2px solid #e9ecef;
-        }
-        
-        .calculator-section h2 {
-            color: #333;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-        
-        .calculator-section p {
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-        
-        .calculator-btn {
-            background: linear-gradient(45deg, #e74c3c, #c0392b);
-            font-size: 1.2rem;
-            padding: 18px 35px;
-        }
-        
-        .calculator-btn:hover {
-            background: linear-gradient(45deg, #c0392b, #a93226);
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sangbeom Park — Professional Identity</title>
+  <meta name="description" content="Cross‑border Accounting & Digital Transformation Specialist. Accelerating IFRS-based finance & consolidation with data and automation." />
+  <meta property="og:title" content="Sangbeom Park — Professional Identity" />
+  <meta property="og:description" content="IFRS·연결회계·원가·DX 자동화 포트폴리오" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+  </style>
 </head>
-<body>
-    <div class="container">
-        <h1>안녕하세요! 👋</h1>
-        <p>웹사이트에 오신 것을 환영합니다. 다양한 기능을 체험해보세요!</p>
-        
-        <div class="calculator-section">
-            <h2>🧮 계산기</h2>
-            <p>간편하고 직관적인 계산기를 사용해보세요!</p>
-            <a href="/calculater.html" class="btn calculator-btn">계산기 사용하기</a>
-        </div>
-        
-        <div class="features">
-            <div class="feature">
-                <h3>🧮 계산기</h3>
-                <p>사칙연산 지원</p>
-            </div>
-            <div class="feature">
-                <h3>📱 반응형</h3>
-                <p>모든 기기에서 최적화</p>
-            </div>
-            <div class="feature">
-                <h3>🎨 모던 UI</h3>
-                <p>아름다운 디자인</p>
-            </div>
-            <div class="feature">
-                <h3>⌨️ 키보드 지원</h3>
-                <p>키보드로도 사용 가능</p>
-            </div>
-        </div>
+<body class="bg-white text-slate-900">
+  <!-- ===== Navbar ===== -->
+  <header class="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="font-semibold">Sangbeom Park</div>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#about" class="hover:text-slate-700">About</a>
+        <a href="#skills" class="hover:text-slate-700">Skills</a>
+        <a href="#portfolio" class="hover:text-slate-700">Portfolio</a>
+        <a href="#journal" class="hover:text-slate-700">Journal</a>
+        <a href="#contact" class="hover:text-slate-700">Contact</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button data-lang="ko" class="lang-btn px-2 py-1 rounded text-xs border border-indigo-200 bg-indigo-50 text-indigo-700">KR</button>
+        <button data-lang="jp" class="lang-btn px-2 py-1 rounded text-xs border border-slate-200">JP</button>
+        <button data-lang="en" class="lang-btn px-2 py-1 rounded text-xs border border-slate-200">EN</button>
+        <a href="/auth/login" class="px-3 py-1 rounded text-xs border border-indigo-600 text-indigo-600 hover:bg-indigo-50 transition">로그인</a>
+        <a href="/contents/calculator/plus" class="px-3 py-1 rounded text-xs bg-indigo-600 text-white hover:bg-indigo-700 transition">덧셈</a>
+        <a href="/contents/calculator/minus" class="px-3 py-1 rounded text-xs bg-indigo-600 text-white hover:bg-indigo-700 transition">뺄셈</a>
+        <a href="/contents/calculator/multiply" class="px-3 py-1 rounded text-xs bg-indigo-600 text-white hover:bg-indigo-700 transition">곱셈</a>
+        <a href="/contents/calculator/divide" class="px-3 py-1 rounded text-xs bg-indigo-600 text-white hover:bg-indigo-700 transition">나눗셈</a>
+
+      </div>
     </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="border-b border-slate-200 bg-gradient-to-b from-indigo-50 to-white">
+    <div class="max-w-6xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white px-3 py-1 text-xs text-indigo-700">IFRS · CPA 1차 · JLPT N1</span>
+        <h1 id="i-headline" class="mt-4 text-3xl md:text-5xl font-extrabold tracking-tight">Cross‑border Accounting & Digital Transformation Specialist</h1>
+        <p id="i-sub" class="mt-4 text-slate-700 leading-relaxed">IFRS 기반의 재무·원가·연결회계를 데이터와 자동화로 가속합니다.</p>
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a id="i-resume" href="#" class="inline-flex items-center gap-2 rounded-2xl px-4 py-2 border border-indigo-600 bg-indigo-600 text-white hover:bg-indigo-700 transition">Resume</a>
+          <a href="https://github.com/" class="inline-flex items-center gap-2 rounded-2xl px-4 py-2 border border-slate-300 hover:border-indigo-300 hover:text-indigo-700 transition">GitHub</a>
+          <a href="https://www.linkedin.com/" class="inline-flex items-center gap-2 rounded-2xl px-4 py-2 border border-slate-300 hover:border-indigo-300 hover:text-indigo-700 transition">LinkedIn</a>
+          <a href="mailto:hello@example.com" class="inline-flex items-center gap-2 rounded-2xl px-4 py-2 border border-slate-300 hover:border-indigo-300 hover:text-indigo-700 transition">Email</a>
+        </div>
+      </div>
+      <div class="md:pl-8">
+        <div class="rounded-2xl border border-indigo-200 bg-white p-6 shadow-sm">
+          <h3 class="font-semibold">Professional Focus</h3>
+          <p class="mt-1 text-sm text-slate-600">국제회계(연결/원가/재무) × 데이터 자동화 × 한·일 DX.</p>
+          <div class="mt-4 grid grid-cols-2 gap-3 text-sm">
+            <div class="rounded-xl border border-slate-200 p-3">
+              <div class="font-medium">Core Domains</div>
+              <ul class="mt-2 list-disc list-inside text-slate-600">
+                <li>IFRS / 연결</li>
+                <li>결산 프로세스</li>
+                <li>원가/관리회계</li>
+              </ul>
+            </div>
+            <div class="rounded-xl border border-slate-200 p-3">
+              <div class="font-medium">Tech Stack</div>
+              <ul class="mt-2 list-disc list-inside text-slate-600">
+                <li>Python, SQL</li>
+                <li>Java, Spring</li>
+                <li>BI (Power BI / Tableau)</li>
+              </ul>
+            </div>
+          </div>
+          <a href="#portfolio" class="mt-5 inline-flex items-center gap-2 text-indigo-700 hover:underline">See portfolio →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== About ===== -->
+  <section id="about" class="max-w-6xl mx-auto px-4 py-16">
+    <div class="grid md:grid-cols-5 gap-10 items-start">
+      <div class="md:col-span-2">
+        <h2 class="text-2xl font-bold">About Me</h2>
+        <p class="mt-3 text-slate-700 leading-relaxed">
+          IFRS 기반의 재무·원가·연결회계를 중심으로, 데이터와 자동화를 통해 재무 프로세스를 고도화해 왔습니다.
+          한국과 일본을 잇는 Cross‑border 역량을 바탕으로, 회계의 신뢰성과 속도를 동시에 높이는 DX를 지향합니다.
+        </p>
+        <div class="mt-4 flex flex-wrap gap-2 text-sm">
+          <span class="rounded-full border px-3 py-1 border-indigo-300 text-indigo-700 bg-indigo-50">CPA 1차</span>
+          <span class="rounded-full border px-3 py-1 border-indigo-300 text-indigo-700 bg-indigo-50">JLPT N1</span>
+          <span class="rounded-full border px-3 py-1 border-indigo-300 text-indigo-700 bg-indigo-50">FAT 1급</span>
+        </div>
+      </div>
+      <div class="md:col-span-3 grid sm:grid-cols-2 gap-4">
+        <div class="rounded-2xl border border-slate-200 p-5">
+          <div class="font-medium">Recent Focus</div>
+          <ul class="mt-3 list-disc list-inside text-slate-700 text-sm space-y-1">
+            <li>결산 자동화 파이프라인 구축</li>
+            <li>연결조정 분개 검증 로직 설계</li>
+            <li>원가분석 시각화 및 KPI 대시보드</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-5">
+          <div class="font-medium">Cross‑border</div>
+          <ul class="mt-3 list-disc list-inside text-slate-700 text-sm space-y-1">
+            <li>JP 기업 회계 리서치 및 용어 표준화</li>
+            <li>영·일문 리포트 템플릿 운영</li>
+            <li>한·일 데이터 파이프라인 PoC</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Skills ===== -->
+  <section id="skills" class="bg-slate-50 border-y border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <h2 class="text-2xl font-bold">Core Skills</h2>
+      <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Card -->
+        <div class="rounded-2xl bg-white border border-slate-200 p-5 shadow-sm">
+          <div class="text-sm font-semibold text-indigo-700">IFRS & 연결회계</div>
+          <ul class="mt-2 text-sm text-slate-700 space-y-1 list-disc list-inside">
+            <li>재무제표 작성/분석</li>
+            <li>결산/공시</li>
+            <li>내부통제</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl bg-white border border-slate-200 p-5 shadow-sm">
+          <div class="text-sm font-semibold text-indigo-700">ERP & 데이터</div>
+          <ul class="mt-2 text-sm text-slate-700 space-y-1 list-disc list-inside">
+            <li>SAP FICO 기본</li>
+            <li>SQL/ETL</li>
+            <li>데이터 모델링</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl bg-white border border-slate-200 p-5 shadow-sm">
+          <div class="text-sm font-semibold text-indigo-700">DX & 자동화</div>
+          <ul class="mt-2 text-sm text-slate-700 space-y-1 list-disc list-inside">
+            <li>Python 업무자동화</li>
+            <li>RPA 기초</li>
+            <li>Power BI / Tableau</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl bg-white border border-slate-200 p-5 shadow-sm">
+          <div class="text-sm font-semibold text-indigo-700">개발 스택</div>
+          <ul class="mt-2 text-sm text-slate-700 space-y-1 list-disc list-inside">
+            <li>Java Spring Boot</li>
+            <li>Python FastAPI</li>
+            <li>Git/GitHub</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl bg-white border border-slate-200 p-5 shadow-sm">
+          <div class="text-sm font-semibold text-indigo-700">언어</div>
+          <ul class="mt-2 text-sm text-slate-700 space-y-1 list-disc list-inside">
+            <li>KR 🇰🇷</li>
+            <li>JP 🇯🇵 (JLPT N1)</li>
+            <li>EN 🌎</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Portfolio ===== -->
+  <section id="portfolio" class="max-w-6xl mx-auto px-4 py-16">
+    <div class="flex items-end justify-between gap-4">
+      <h2 class="text-2xl font-bold">Portfolio</h2>
+      <a href="#" class="text-sm text-indigo-700 hover:underline">모든 프로젝트 보기</a>
+    </div>
+    <div class="mt-6 grid md:grid-cols-3 gap-5">
+      <a href="#" class="group rounded-2xl border border-slate-200 p-5 bg-white shadow-sm hover:border-indigo-300 transition">
+        <div class="text-sm font-medium"><span class="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-indigo-700">Case</span></div>
+        <div class="mt-3 text-lg font-semibold group-hover:text-slate-900">월말결산 자동화 파이프라인</div>
+        <p class="mt-2 text-sm text-slate-600 leading-relaxed">재무 원장 데이터를 자동 집계·검증하여 결산 TAT를 단축.</p>
+        <div class="mt-3 flex flex-wrap gap-2"><span class="text-xs rounded-full border border-slate-200 px-2 py-0.5">Python</span><span class="text-xs rounded-full border border-slate-200 px-2 py-0.5">Pandas</span><span class="text-xs rounded-full border border-slate-200 px-2 py-0.5">ETL</span></div>
+      </a>
+      <a href="#" class="group rounded-2xl border border-slate-200 p-5 bg-white shadow-sm hover:border-indigo-300 transition">
+        <div class="text-sm font-medium"><span class="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-indigo-700">Case</span></div>
+        <div class="mt-3 text-lg font-semibold group-hover:text-slate-900">ERP 전표 검증 대시보드</div>
+        <p class="mt-2 text-sm text-slate-600 leading-relaxed">비정상 전표·코스트 센터를 탐지하는 시각화 리포트.</p>
+        <div class="mt-3 flex flex-wrap gap-2"><span class="text-xs rounded-full border border-slate-200 px-2 py-0.5">Power BI</span><span class="text-xs rounded-full border border-slate-200 px-2 py-0.5">SQL</span></div>
+      </a>
+      <a href="#" class="group rounded-2xl border border-slate-200 p-5 bg-white shadow-sm hover:border-indigo-300 transition">
+        <div class="text-sm font-medium"><span class="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-indigo-700">Case</span></div>
+        <div class="mt-3 text-lg font-semibold group-hover:text-slate-900">원가분석 시뮬레이터</div>
+        <p class="mt-2 text-sm text-slate-600 leading-relaxed">원가 요소 민감도 분석 및 가격 정책 실험 도구.</p>
+        <div class="mt-3 flex flex-wrap gap-2"><span class="text-xs rounded-full border border-slate-200 px-2 py-0.5">Python</span><span class="text-xs rounded-full border border-slate-200 px-2 py-0.5">Streamlit</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== Journal ===== -->
+  <section id="journal" class="bg-slate-50 border-y border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <div class="flex items-end justify-between gap-4">
+        <h2 class="text-2xl font-bold">Journal</h2>
+        <a href="#" class="text-sm text-indigo-700 hover:underline">모든 글 보기</a>
+      </div>
+      <div class="mt-6 grid md:grid-cols-3 gap-5">
+        <a href="#" class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:border-slate-300 transition">
+          <div class="text-xs text-slate-500">2025-09-28</div>
+          <div class="mt-1 font-semibold">IFRS 15 핵심정리와 실무 체크리스트</div>
+        </a>
+        <a href="#" class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:border-slate-300 transition">
+          <div class="text-xs text-slate-500">2025-08-12</div>
+          <div class="mt-1 font-semibold">결산 자동화: 파일 지옥에서 파이프라인으로</div>
+        </a>
+        <a href="#" class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:border-slate-300 transition">
+          <div class="text-xs text-slate-500">2025-07-01</div>
+          <div class="mt-1 font-semibold">한·일 회계 DX, 어디서부터 시작할까</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact" class="max-w-6xl mx-auto px-4 py-16">
+    <div class="grid md:grid-cols-5 gap-10 items-start">
+      <div class="md:col-span-2">
+        <h2 class="text-2xl font-bold">Contact</h2>
+        <p class="mt-3 text-slate-700 text-sm leading-relaxed">
+          함께 문제를 정의하고, 가장 단순하고 견고한 프로세스로 해결합니다. 프로젝트 협업 또는 인터뷰 제안은 이메일로 연락 주세요.
+        </p>
+        <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
+          <a href="mailto:hello@example.com" class="inline-flex items-center gap-2 rounded-2xl px-4 py-2 border border-indigo-600 text-indigo-700 hover:bg-indigo-50">Email</a>
+          <a href="https://github.com/" class="inline-flex items-center gap-2 rounded-2xl px-4 py-2 border border-slate-300 hover:border-slate-400">GitHub</a>
+          <a href="https://www.linkedin.com/" class="inline-flex items-center gap-2 rounded-2xl px-4 py-2 border border-slate-300 hover:border-slate-400">LinkedIn</a>
+        </div>
+      </div>
+      <div class="md:col-span-3">
+        <div class="rounded-2xl border border-slate-200 p-5 bg-white shadow-sm">
+          <h3 class="font-semibold">Quick Intro (100자 내외)</h3>
+          <p class="mt-2 text-sm text-slate-600">국제회계/연결/원가 중심의 DX 실무가. Python·SQL·BI로 결산 자동화와 데이터 기반의 의사결정을 돕습니다.</p>
+          <div class="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
+            <div class="rounded-xl border border-slate-200 p-3">
+              <div class="text-slate-500">관심 분야</div>
+              <div class="font-medium mt-1">IFRS, 연결, 결산, BI, 자동화</div>
+            </div>
+            <div class="rounded-xl border border-slate-200 p-3">
+              <div class="text-slate-500">근무 희망</div>
+              <div class="font-medium mt-1">KR/JP Cross‑border · 재무/원가/분석</div>
+            </div>
+          </div>
+          <a href="#" class="mt-4 inline-flex items-center gap-2 text-indigo-700 hover:underline">이력서 다운로드</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-slate-500 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div>© <span id="year"></span> Sangbeom Park. All rights reserved.</div>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/" class="hover:text-slate-700">GitHub</a>
+        <a href="https://www.linkedin.com/" class="hover:text-slate-700">LinkedIn</a>
+        <a href="mailto:hello@example.com" class="hover:text-slate-700">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple i18n toggle for headline/subtext
+    const dict = {
+      ko: {
+        headline: 'Cross‑border Accounting & Digital Transformation Specialist',
+        sub: 'IFRS 기반의 재무·원가·연결회계를 데이터와 자동화로 가속합니다.'
+      },
+      en: {
+        headline: 'Cross‑border Accounting & Digital Transformation Specialist',
+        sub: 'Accelerating IFRS-based finance & consolidation with data and automation.'
+      },
+      jp: {
+        headline: '会計 × デジタルトランスフォーメーション（DX）',
+        sub: 'IFRSに基づく財務・原価・連結会計をデータと自動化で加速。'
+      }
+    };
+
+    const btns = document.querySelectorAll('.lang-btn');
+    const headline = document.getElementById('i-headline');
+    const sub = document.getElementById('i-sub');
+
+    btns.forEach(b => b.addEventListener('click', () => {
+      const lang = b.dataset.lang;
+      // visual state
+      btns.forEach(x => x.classList.remove('bg-indigo-50','text-indigo-700','border-indigo-200'));
+      b.classList.add('bg-indigo-50','text-indigo-700','border-indigo-200');
+      // apply copy
+      headline.textContent = dict[lang].headline;
+      sub.textContent = dict[lang].sub;
+    }));
+  </script>
 </body>
 </html>
