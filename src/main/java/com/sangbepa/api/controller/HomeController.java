@@ -11,16 +11,6 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/auth/login")
-    public String login() {
-        return "auth/login";
-    }
-
-    @GetMapping("/auth/register")
-    public String register() {
-        return "auth/register";
-    }
-
     @GetMapping("/contents/calculator/plus")
     public String plus() {
         return "contents/calculator/plus";
@@ -39,6 +29,16 @@ public class HomeController {
     @GetMapping("/contents/calculator/divide")
     public String divide() {
         return "contents/calculator/divide";
+    }
+
+    @GetMapping("/auth/login.html")
+    public String loginhtml() {
+        return "auth/login";
+    }
+
+    @GetMapping("/auth/register.html")
+    public String registerhtml() {
+        return "auth/register";
     }
 
 }
