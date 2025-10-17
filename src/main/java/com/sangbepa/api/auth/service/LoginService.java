@@ -34,6 +34,6 @@ public class LoginService {
             messenger.setMessage("이메일 불일치");
         }
 
-        return messenger;
+        return messenger; // 답을 줄때는 새로운 객체를 만들어서 보낸다.
     }
 }

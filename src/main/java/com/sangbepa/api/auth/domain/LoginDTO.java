@@ -5,7 +5,7 @@ public class LoginDTO {
     private String password;
 
     public String getEmail() {
-        return email;
+        return email; // 리턴타입
     }
     public void setEmail(String email) {
         this.email = email;
