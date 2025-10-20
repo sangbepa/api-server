@@ -1,14 +1,22 @@
 package com.sangbepa.api.auth.domain;
 
 /**
- * Login VO - Repository에서 Service로 데이터 전달용
+ * Register Entity - 회원가입 Entity
  */
-public class LoginVO {
+public class RegisterEntity {
     private String email;
     private String password;
+    private String name;
 
     // 기본 생성자
-    public LoginVO() {
+    public RegisterEntity() {
+    }
+
+    // 전체 필드 생성자
+    public RegisterEntity(String email, String password, String name) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
     }
 
     // Getter 메서드
@@ -20,6 +28,10 @@ public class LoginVO {
         return password;
     }
 
+    public String getName() {
+        return name;
+    }
+
     // Setter 메서드
     public void setEmail(String email) {
         this.email = email;
@@ -27,5 +39,9 @@ public class LoginVO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

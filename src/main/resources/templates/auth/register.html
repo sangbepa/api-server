@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,6 +17,7 @@
     }
   </style>
 </head>
+
 <body class="bg-gray-50 min-h-screen flex items-center justify-center">
   <div class="max-w-md w-full space-y-8">
     <div>
@@ -24,54 +26,87 @@
       </h2>
       <p class="mt-2 text-center text-sm text-gray-600">
         또는
-        <a href="/login" class="font-medium text-indigo-600 hover:text-indigo-500">
+        <a href="/auth/login" class="font-medium text-indigo-600 hover:text-indigo-500">
           로그인
         </a>
       </p>
     </div>
-    <form class="mt-8 space-y-6" action="/register" method="post">
+    <form class="mt-8 space-y-6" action="/auth/register" method="get">
       <div class="space-y-4">
         <div>
           <label for="name" class="block text-sm font-medium text-gray-700">이름</label>
-          <input id="name" name="name" type="text" autocomplete="name" required 
-                 class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
-                 placeholder="이름을 입력하세요">
+          <input id="name" name="name" type="text" autocomplete="name" required
+            class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="이름을 입력하세요" value="홍길동">
         </div>
-        
+
         <div>
           <label for="email" class="block text-sm font-medium text-gray-700">이메일 주소</label>
-          <input id="email" name="email" type="email" autocomplete="email" required 
-                 class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
-                 placeholder="이메일을 입력하세요">
+          <input id="email" name="email" type="text" autocomplete="email" required
+            class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="이메일을 입력하세요" value="test@test.com">
         </div>
-        
+
         <div>
           <label for="password" class="block text-sm font-medium text-gray-700">비밀번호</label>
-          <input id="password" name="password" type="password" autocomplete="new-password" required 
-                 class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
-                 placeholder="비밀번호를 입력하세요">
+          <input id="password" name="password" type="text" autocomplete="new-password" required
+            class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="비밀번호를 입력하세요" value="1234">
         </div>
-        
+
         <div>
           <label for="confirmPassword" class="block text-sm font-medium text-gray-700">비밀번호 확인</label>
-          <input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" required 
-                 class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
-                 placeholder="비밀번호를 다시 입력하세요">
+          <input id="confirmPassword" name="confirmPassword" type="text" autocomplete="new-password" required
+            class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="비밀번호를 다시 입력하세요" value="1234">
         </div>
       </div>
 
       <div class="flex items-center">
         <input id="agree-terms" name="agree-terms" type="checkbox" required
-               class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+          class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
         <label for="agree-terms" class="ml-2 block text-sm text-gray-900">
-          <a href="#" class="text-indigo-600 hover:text-indigo-500">이용약관</a> 및 
+          <a href="#" class="text-indigo-600 hover:text-indigo-500">이용약관</a> 및
           <a href="#" class="text-indigo-600 hover:text-indigo-500">개인정보처리방침</a>에 동의합니다.
         </label>
       </div>
 
+      <!-- 회원가입 결과 메시지 표시 -->
+      <div th:if="${messenger}" class="rounded-md p-4"
+        th:classappend="${messenger.code == 0} ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <!-- 성공 아이콘 -->
+            <svg th:if="${messenger.code == 0}" class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd" />
+            </svg>
+            <!-- 실패 아이콘 -->
+            <svg th:if="${messenger.code != 0}" class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="ml-3 flex-1">
+            <div class="flex items-center justify-between">
+              <p class="text-sm font-medium" th:classappend="${messenger.code == 0} ? 'text-green-800' : 'text-red-800'"
+                th:text="${messenger.message}">메시지</p>
+              <span class="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
+                th:classappend="${messenger.code == 0} ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
+                Code: <span th:text="${messenger.code}">0</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div>
-        <button type="submit" 
-                class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <button type="submit"
+          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
           회원가입
         </button>
       </div>
@@ -84,4 +119,5 @@
     </form>
   </div>
 </body>
+
 </html>

@@ -1,14 +1,20 @@
 package com.sangbepa.api.auth.domain;
 
 /**
- * Login VO - Repository에서 Service로 데이터 전달용
+ * Login Entity - DB 테이블과 매핑될 클래스
  */
-public class LoginVO {
+public class LoginEntity {
     private String email;
     private String password;
 
     // 기본 생성자
-    public LoginVO() {
+    public LoginEntity() {
+    }
+
+    // 전체 필드 생성자
+    public LoginEntity(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     // Getter 메서드
