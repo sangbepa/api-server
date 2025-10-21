@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>상위 5명 승객 정보</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .messenger {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>🚢 Titanic 승객 정보 (상위 5명)</h1>
+    </div>
+
+    <!-- Messenger 메시지 표시 -->
+    <div th:if="${messenger != null}" th:class="${messenger.code == 0 ? 'messenger success' : 'messenger error'}">
+        <strong>코드:</strong> <span th:text="${messenger.code}"></span><br>
+        <strong>메시지:</strong> <span th:text="${messenger.message}"></span>
+    </div>
+
+    <!-- 승객 수 표시 -->
+    <div th:if="${count != null}">
+        <p><strong>총 승객 수:</strong> <span th:text="${count}"></span>명</p>
+    </div>
+
+    <p style="text-align: center; color: #888;">
+        터미널(콘솔)을 확인하세요! 상위 5명의 상세 정보가 출력됩니다.
+    </p>
+</body>
+
+</html>
