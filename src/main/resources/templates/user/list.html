@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>승객 정보 출력 결과</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .header h1 {
+            color: #333;
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .header p {
+            color: #666;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+
+        .messenger {
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            color: #155724;
+            border: 2px solid #28a745;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .error {
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            color: #721c24;
+            border: 2px solid #dc3545;
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+        }
+
+        .messenger-code {
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .messenger-text {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+            color: #333;
+            font-size: 1.5em;
+        }
+
+        .count-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1.3em;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.4);
+        }
+
+        .terminal-info {
+            text-align: center;
+            padding: 30px;
+            background: #2d3748;
+            color: #fff;
+            border-radius: 10px;
+            margin-top: 30px;
+            font-size: 1.1em;
+        }
+
+        .terminal-info::before {
+            content: "💻";
+            font-size: 3em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚢 타이타닉 승객 정보</h1>
+            <p>Repository 출력 결과</p>
+        </div>
+
+        <!-- Messenger 메시지 표시 -->
+        <div th:if="${messenger != null}" th:class="${messenger.code == 0 ? 'messenger success' : 'messenger error'}">
+            <div class="messenger-code">
+                📋 처리 코드: <span th:text="${messenger.code}"></span>
+            </div>
+            <div class="messenger-text">
+                <span th:text="${messenger.message}">메시지</span>
+            </div>
+        </div>
+
+        <!-- 승객 수 표시 -->
+        <div class="info-box" th:if="${count != null}">
+            <h3>✅ 처리 완료</h3>
+            <p>출력된 승객 수: <span class="count-badge" th:text="${count}">0</span> 명</p>
+        </div>
+
+        <!-- 승객 정보 테이블 -->
+        <div th:if="${passengers != null and passengers.size() > 0}">
+            <h2 style="text-align: center; color: #333; margin: 30px 0 20px 0;">👥 승객 상세 정보</h2>
+
+            <div th:each="passenger, iterStat : ${passengers}"
+                style="margin-bottom: 25px; padding: 20px; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 10px; border-left: 5px solid #667eea;">
+                <h3 style="margin-top: 0; color: #667eea;">
+                    🚢 승객 #<span th:text="${iterStat.count}">1</span>
+                </h3>
+
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <td style="padding: 8px; font-weight: bold; width: 30%; color: #666;">승객 ID</td>
+                        <td style="padding: 8px;" th:text="${passenger.passengerId}">-</td>
+                    </tr>
+                    <tr style="background-color: rgba(102, 126, 234, 0.05);">
+                        <td style="padding: 8px; font-weight: bold; color: #666;">이름</td>
+                        <td style="padding: 8px;" th:text="${passenger.name}">-</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; font-weight: bold; color: #666;">생존 여부</td>
+                        <td style="padding: 8px;">
+                            <span th:if="${passenger.survived == 1}" style="color: #28a745; font-weight: bold;">✓
+                                생존</span>
+                            <span th:if="${passenger.survived == 0}" style="color: #dc3545; font-weight: bold;">✗
+                                사망</span>
+                        </td>
+                    </tr>
+                    <tr style="background-color: rgba(102, 126, 234, 0.05);">
+                        <td style="padding: 8px; font-weight: bold; color: #666;">객실 등급</td>
+                        <td style="padding: 8px;" th:text="${passenger.pclass} + '등석'">-</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; font-weight: bold; color: #666;">성별</td>
+                        <td style="padding: 8px;" th:text="${passenger.sex}">-</td>
+                    </tr>
+                    <tr style="background-color: rgba(102, 126, 234, 0.05);">
+                        <td style="padding: 8px; font-weight: bold; color: #666;">나이</td>
+                        <td style="padding: 8px;" th:text="${passenger.age != null ? passenger.age + '세' : '알 수 없음'}">-
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; font-weight: bold; color: #666;">형제/자매 수</td>
+                        <td style="padding: 8px;" th:text="${passenger.sibSp}">-</td>
+                    </tr>
+                    <tr style="background-color: rgba(102, 126, 234, 0.05);">
+                        <td style="padding: 8px; font-weight: bold; color: #666;">부모/자녀 수</td>
+                        <td style="padding: 8px;" th:text="${passenger.parch}">-</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; font-weight: bold; color: #666;">티켓 번호</td>
+                        <td style="padding: 8px;" th:text="${passenger.ticket}">-</td>
+                    </tr>
+                    <tr style="background-color: rgba(102, 126, 234, 0.05);">
+                        <td style="padding: 8px; font-weight: bold; color: #666;">요금</td>
+                        <td style="padding: 8px;" th:text="${passenger.fare != null ? '$' + passenger.fare : '$0'}">-
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; font-weight: bold; color: #666;">객실 번호</td>
+                        <td style="padding: 8px;"
+                            th:text="${passenger.cabin != null and passenger.cabin != '' ? passenger.cabin : '미배정'}">-
+                        </td>
+                    </tr>
+                    <tr style="background-color: rgba(102, 126, 234, 0.05);">
+                        <td style="padding: 8px; font-weight: bold; color: #666;">탑승 항구</td>
+                        <td style="padding: 8px;" th:text="${passenger.embarked}">-</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 돌아가기 버튼 -->
+        <div style="text-align: center;">
+            <a href="/" class="back-button">🏠 홈으로 돌아가기</a>
+        </div>
+    </div>
+</body>
+
+</html>

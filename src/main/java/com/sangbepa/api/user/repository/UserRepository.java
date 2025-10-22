@@ -3,6 +3,7 @@ package com.sangbepa.api.user.repository;
 import org.springframework.stereotype.Repository;
 import com.sangbepa.api.user.domain.UserDTO;
 import com.sangbepa.api.user.domain.UserVO;
+import com.sangbepa.api.common.domain.Messenger;
 import java.util.List;
 
 /**
@@ -13,11 +14,12 @@ import java.util.List;
 public class UserRepository {
 
     /**
-     * 승객 정보를 터미널에 출력
+     * 승객 정보를 터미널에 출력하고 Messenger 반환
      * 
      * @param passengers 출력할 승객 DTO 리스트
+     * @return 출력 결과를 담은 Messenger
      */
-    public void printPassengerInfo(List<UserDTO> passengers) {
+    public Messenger printPassengerInfo(List<UserDTO> passengers) {
         System.out.println("\n[Repository] 터미널 출력 시작");
         System.out.println("==========================================");
         System.out.println("  받은 데이터: " + passengers.size() + "개의 DTO");
@@ -64,5 +66,11 @@ public class UserRepository {
         System.out.println("==========================================");
         System.out.println("[Repository] ✓ " + passengers.size() + "명 출력 완료");
         System.out.println("==========================================\n");
+
+        // Messenger 생성 및 반환
+        Messenger messenger = new Messenger();
+        messenger.setCode(0);
+        messenger.setMessage("Repository: " + passengers.size() + "명의 승객 정보를 성공적으로 출력했습니다");
+        return messenger;
     }
 }

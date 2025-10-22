@@ -26,12 +26,12 @@ public class UserController {
 
     /**
      * 상위 5명 추출 API
-     * GET /user/top5
+     * GET /user/list
      */
-    @GetMapping("/user/top5")
+    @GetMapping("/user/list")
     public String getTop5Passengers(Model model) {
         System.out.println("\n==========================================");
-        System.out.println("[Controller] GET /user/top5 - MVC 흐름 연습");
+        System.out.println("[Controller] GET /user/list - MVC 흐름 연습");
         System.out.println("==========================================");
 
         Messenger messenger = new Messenger();
@@ -46,7 +46,7 @@ public class UserController {
                 messenger.setCode(-1);
                 messenger.setMessage("오류: CSV 파일을 찾을 수 없습니다");
                 model.addAttribute("messenger", messenger);
-                return "user/result"; // View 반환
+                return "user/list"; // View 반환
             }
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -97,14 +97,12 @@ public class UserController {
             }
             reader.close();
 
-            // 3. Service로 전달
+            // 3. Service로 전달하고 Repository의 Messenger 받기
             if (top5.size() > 0) {
                 System.out.println("[Controller] 3단계: Service로 " + top5.size() + "개의 DTO 전달");
-                userService.passToRepository(top5);
+                messenger = userService.passToRepository(top5);
 
-                messenger.setCode(0);
-                messenger.setMessage("성공: 상위 " + top5.size() + "명의 정보를 추출하고 출력했습니다");
-                System.out.println("[Controller] ✓ 성공");
+                System.out.println("[Controller] ✓ Repository의 Messenger 수신");
 
                 // Model에 데이터 담기
                 model.addAttribute("passengers", top5);
@@ -127,7 +125,7 @@ public class UserController {
         System.out.println("==========================================\n");
 
         // View 이름 반환
-        return "user/result";
+        return "user/list";
     }
 
     /**
