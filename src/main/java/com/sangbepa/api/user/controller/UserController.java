@@ -1,7 +1,7 @@
 package com.sangbepa.api.user.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import com.sangbepa.api.user.service.UserService;
 import com.sangbepa.api.user.domain.UserDTO;
@@ -20,18 +20,33 @@ import lombok.RequiredArgsConstructor;
  */
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/users") // 단순히 이름이다! users는 테이블 이름이 된다.
 public class UserController {
 
     private final UserService userService;
 
     /**
-     * 상위 5명 추출 API
-     * GET /user/list
+     * 승객 목록 페이지 표시
+     * GET /users/list
      */
-    @GetMapping("/user/list")
-    public String getTop5Passengers(Model model) {
+    @GetMapping("/list")
+    public String showList(Model model) {
+        return "user/list";
+    }
+
+    @PostMapping("") // 한명씩 저장하는 기능도 미리 추가를 해야한다.
+    public String save(Model model) {
+        return "";
+    }
+
+    /**
+     * 상위 5명 추출 API
+     * POST /users/all
+     */
+    @PostMapping("/all")
+    public String saveALL(Model model) {
         System.out.println("\n==========================================");
-        System.out.println("[Controller] GET /user/list - MVC 흐름 연습");
+        System.out.println("[Controller] POST /users/all - MVC 흐름 연습");
         System.out.println("==========================================");
 
         Messenger messenger = new Messenger();

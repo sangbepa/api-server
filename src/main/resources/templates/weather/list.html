@@ -128,6 +128,24 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
         }
+
+        .load-button {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-weight: bold;
+        }
+
+        .load-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
     </style>
 </head>
 
@@ -136,6 +154,15 @@
         <div class="header">
             <h1>🌤️ 날씨 정보</h1>
             <p>Repository 출력 결과</p>
+        </div>
+
+        <!-- 데이터 불러오기 버튼 -->
+        <div style="text-align: center; margin: 30px 0;">
+            <form action="/weather/all" method="post" style="display: inline;">
+                <button type="submit" class="load-button">
+                    📊 날씨 데이터 불러오기
+                </button>
+            </form>
         </div>
 
         <!-- Messenger 메시지 표시 -->
@@ -156,12 +183,12 @@
 
         <!-- 날씨 정보 테이블 -->
         <div th:if="${weatherList != null and weatherList.size() > 0}">
-            <h2 style="text-align: center; color: #333; margin: 30px 0 20px 0;">🌡️ 날씨 상세 정보</h2>
+            <h2 style="text-align: center; color: #333; margin: 30px 0 20px 0;">🌤️ 날씨 상세 정보</h2>
 
             <div th:each="weather, iterStat : ${weatherList}"
                 style="margin-bottom: 25px; padding: 20px; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 10px; border-left: 5px solid #667eea;">
                 <h3 style="margin-top: 0; color: #667eea;">
-                    🌤️ 날씨 데이터 #<span th:text="${iterStat.count}">1</span>
+                    🌤️ 날씨 #<span th:text="${iterStat.count}">1</span>
                 </h3>
 
                 <table style="width: 100%; border-collapse: collapse;">
@@ -179,7 +206,7 @@
                         <td style="padding: 8px;">
                             <span
                                 th:text="${weather.maxTemperature != null ? weather.maxTemperature + '℃' : '데이터 없음'}">-</span>
-                            <span th:if="${weather.maxTemperatureTime != null}" style="color: #888; font-size: 0.9em;"
+                            <span th:if="${weather.maxTemperatureTime != null}"
                                 th:text="' (' + ${weather.maxTemperatureTime} + ')'"></span>
                         </td>
                     </tr>
@@ -188,7 +215,7 @@
                         <td style="padding: 8px;">
                             <span
                                 th:text="${weather.minTemperature != null ? weather.minTemperature + '℃' : '데이터 없음'}">-</span>
-                            <span th:if="${weather.minTemperatureTime != null}" style="color: #888; font-size: 0.9em;"
+                            <span th:if="${weather.minTemperatureTime != null}"
                                 th:text="' (' + ${weather.minTemperatureTime} + ')'"></span>
                         </td>
                     </tr>
@@ -200,13 +227,9 @@
                     </tr>
                     <tr style="background-color: rgba(102, 126, 234, 0.05);">
                         <td style="padding: 8px; font-weight: bold; color: #666;">💧 강수량</td>
-                        <td style="padding: 8px;">
-                            <span th:if="${weather.precipitation == null or weather.precipitation == 0}"
-                                style="color: #999;">없음</span>
-                            <span th:if="${weather.precipitation != null and weather.precipitation > 0}"
-                                style="color: #1e88e5; font-weight: bold;"
-                                th:text="${weather.precipitation} + 'mm'">-</span>
-                        </td>
+                        <td style="padding: 8px;"
+                            th:text="${weather.precipitation != null and weather.precipitation > 0 ? weather.precipitation + 'mm' : '없음'}">
+                            -</td>
                     </tr>
                 </table>
             </div>

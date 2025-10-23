@@ -1,7 +1,7 @@
 package com.sangbepa.api.weather.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import com.sangbepa.api.weather.service.WeatherService;
 import com.sangbepa.api.weather.domain.WeatherDTO;
@@ -14,8 +14,9 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 
 /**
- * Weather Controller
- * CSV 파일을 읽어서 WeatherDTO로 변환 후 Service에 전달
+ * Weather Controller - MVC 연습용
+ * CSV → DTO → Service → Repository 흐름 연습
+ * Messenger를 Model에 담아서 View 반환
  */
 @Controller
 @RequiredArgsConstructor
@@ -24,13 +25,22 @@ public class WeatherController {
     private final WeatherService weatherService;
 
     /**
-     * 날씨 데이터 로드 API
+     * 날씨 목록 페이지 표시
      * GET /weather/list
      */
     @GetMapping("/weather/list")
+    public String showList(Model model) {
+        return "weather/list";
+    }
+
+    /**
+     * 날씨 데이터 로드 API
+     * POST /weather/all
+     */
+    @PostMapping("/weather/all")
     public String loadWeatherData(Model model) {
         System.out.println("\n==========================================");
-        System.out.println("[WeatherController] GET /weather/list");
+        System.out.println("[WeatherController] POST /weather/all - MVC 흐름 연습");
         System.out.println("==========================================");
 
         Messenger messenger = new Messenger();
@@ -94,7 +104,7 @@ public class WeatherController {
             // 3. Service로 전달하고 Repository의 Messenger 받기
             if (weatherList.size() > 0) {
                 System.out.println("[WeatherController] 3단계: Service로 " + weatherList.size() + "개의 WeatherDTO 전달");
-                messenger = weatherService.processWeatherData(weatherList);
+                messenger = weatherService.passToRepository(weatherList);
 
                 System.out.println("[WeatherController] ✓ Repository의 Messenger 수신");
 
