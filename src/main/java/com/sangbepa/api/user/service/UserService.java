@@ -13,10 +13,12 @@ public interface UserService {
     // CREATE
     Messenger save(UserDTO dto);
 
-    // READ
-    Messenger findAll();
+    Messenger saveAll(List<UserDTO> dtoList);
 
-    Messenger findById(Integer id);
+    // READ
+    Messenger findAll(); // query all
+
+    Messenger findById(Integer id); // query by id
 
     // UPDATE
     Messenger update(Integer id, UserDTO dto);

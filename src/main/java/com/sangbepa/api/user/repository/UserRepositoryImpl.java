@@ -59,6 +59,12 @@ public class UserRepositoryImpl implements UserRepository {
         }
     }
 
+    @Override
+    public Messenger saveAll(List<UserDTO> dtoList) {
+        System.out.println("\n[Repository] saveAll() 호출");
+        return null;
+    }
+
     /**
      * READ - 전체 조회
      */

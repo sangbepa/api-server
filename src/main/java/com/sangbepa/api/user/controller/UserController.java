@@ -23,7 +23,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/users") // 단순히 이름이다! users는 테이블 이름이 된다.
 public class UserController {
 
-    private final UserService userService;
+    private final UserService userService; // 기능 타입의 정의는 인터페이스로 한다. implements는 자동으로 끌려옴
 
     /**
      * 승객 목록 페이지 표시
@@ -34,19 +34,14 @@ public class UserController {
         return "user/list";
     }
 
-    @PostMapping("") // 한명씩 저장하는 기능도 미리 추가를 해야한다.
-    public String save(Model model) {
-        return "";
-    }
-
     /**
      * 상위 5명 추출 API
-     * POST /users/all
+     * POST /users/csv
      */
-    @PostMapping("/all")
+    @PostMapping("/csv")
     public String saveALL(Model model) {
         System.out.println("\n==========================================");
-        System.out.println("[Controller] POST /users/all - MVC 흐름 연습");
+        System.out.println("[Controller] POST /users/csv - MVC 흐름 연습");
         System.out.println("==========================================");
 
         Messenger messenger = new Messenger();
@@ -163,5 +158,56 @@ public class UserController {
         } catch (NumberFormatException e) {
             return null;
         }
+    }
+
+    @PostMapping("")
+    public Messenger save(UserDTO dto, Model model) {
+
+        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    }
+
+    @PostMapping("/all")
+    public Messenger saveAll(List<UserDTO> dtoList) {
+
+        throw new UnsupportedOperationException("Unimplemented method 'saveAll'");
+    }
+
+    @GetMapping("")
+    public Messenger findAll() {
+
+        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+    }
+
+    @GetMapping("/all")
+    public Messenger findById(Integer id) {
+
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+    }
+
+    @GetMapping("id/{id}")
+    public Messenger update(Integer id, UserDTO dto) {
+
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    }
+
+    @DeleteMapping("/{id}")
+    public Messenger delete(Integer id) {
+
+        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    }
+
+    /**
+     * This method should not have the @Override annotation unless there is a
+     * matching method
+     * in a superclass or interface. Implement the actual logic or remove if not
+     * needed.
+     */
+    public Messenger passToRepository(List<UserDTO> dtoList) {
+
+        // For demonstration, let's assume a placeholder Messenger response:
+        Messenger messenger = new Messenger();
+        messenger.setMessage("Successfully passed to repository");
+
+        return messenger;
     }
 }

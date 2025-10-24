@@ -15,31 +15,31 @@ public class MemberController {
     
     @PostMapping("") // 결국 ("")은 이름을 남겨주는 것.- id가 없는 상태 - 아직 id에 id가 없다.
     public void save(@RequestBody MemberDTO MemberDTO) {
-        // TODO Auto-generated method stub
+       
         throw new UnsupportedOperationException("Unimplemented method 'save'");
     }
 
     @PutMapping("/{id}") // 결국 ("")은 이름을 남겨주는 것.- id가 없는 상태
     public void update(@RequestBody MemberDTO MemberDTO) {
-        // TODO Auto-generated method stub
+       
         throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     @DeleteMapping("/{id}") // db에서 생성된 id - html에서 입력한 id가 아니다.
     public void delete(@PathVariable Long id) {
-        // TODO Auto-generated method stub
+       
         throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }
 
     @GetMapping("/id/{id}") // 결국 ("")은 이름을 남겨주는 것.
     public void findById(@PathVariable Long id) {
-        // TODO Auto-generated method stub
+       
         throw new UnsupportedOperationException("Unimplemented method 'findById'");
     }
 
     @GetMapping("all")
     public void findAll() {
-        // TODO Auto-generated method stub
+       
         throw new UnsupportedOperationException("Unimplemented method 'findAll'");
     }
 

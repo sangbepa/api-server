@@ -27,6 +27,12 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(dto);
     }
 
+    @Override
+    public Messenger saveAll(List<UserDTO> dtoList) {
+        System.out.println("\n[Service] saveAll() 호출 - Repository로 전달");
+        return userRepository.saveAll(dtoList);
+    }
+
     /**
      * READ - 전체 조회
      * 파이프라인: Controller → Service → Repository

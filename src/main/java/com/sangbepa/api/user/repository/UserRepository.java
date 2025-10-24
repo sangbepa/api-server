@@ -25,4 +25,6 @@ public interface UserRepository {
 
     // BULK - CSV 데이터 출력 (기존 기능)
     Messenger printPassengerInfo(List<UserDTO> passengers);
+
+    Messenger saveAll(List<UserDTO> dtoList);
 }
