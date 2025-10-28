@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/esgseeddb
+    username: esgseed
+    password: esgseed1234
+  jpa:
+    hibernate:
+      ddl-auto: validate   # (테이블 이미 있으니 validate 권장. 개발 중엔 update도 가능)
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true

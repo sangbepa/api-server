@@ -1,0 +1,11 @@
+"2017 NAICS Code","2017 NAICS Title","GHG","Unit","Supply Chain Emission Factors without Margins","Margins of Supply Chain Emission Factors","Supply Chain Emission Factors with Margins","Reference USEEIO Code"
+111110,"Soybean Farming","All GHGs","kg CO2e/2022 USD, purchaser price",0.488,0.044,0.532,"1111A0"
+111120,"Oilseed (except Soybean) Farming","All GHGs","kg CO2e/2022 USD, purchaser price",0.488,0.044,0.532,"1111A0"
+111130,"Dry Pea and Bean Farming","All GHGs","kg CO2e/2022 USD, purchaser price",0.809,0.04,0.848,"1111B0"
+111140,"Wheat Farming","All GHGs","kg CO2e/2022 USD, purchaser price",0.809,0.04,0.848,"1111B0"
+111150,"Corn Farming","All GHGs","kg CO2e/2022 USD, purchaser price",0.809,0.04,0.848,"1111B0"
+111160,"Rice Farming","All GHGs","kg CO2e/2022 USD, purchaser price",0.809,0.04,0.848,"1111B0"
+111191,"Oilseed and Grain Combination Farming","All GHGs","kg CO2e/2022 USD, purchaser price",0.809,0.04,0.848,"1111B0"
+111199,"All Other Grain Farming","All GHGs","kg CO2e/2022 USD, purchaser price",0.809,0.04,0.848,"1111B0"
+111211,"Potato Farming","All GHGs","kg CO2e/2022 USD, purchaser price",0.591,0.041,0.631,"111200"
+
