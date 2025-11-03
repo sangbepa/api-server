@@ -62,3 +62,4 @@ public class LoginController {
         return "auth/login"; // 뷰 이름을 반환한다.
     }
 }
+
