@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # PostgreSQL 데이터베이스
+  postgres:
+    image: postgres:16-alpine
+    container_name: esgseed-postgres
+    environment:
+      POSTGRES_DB: esgseeddb
+      POSTGRES_USER: esgseed
+      POSTGRES_PASSWORD: esgseed1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - esgseed-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U esgseed"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Spring Boot API 서버
+  api-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: esgseed-api-server
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/esgseeddb
+      SPRING_DATASOURCE_USERNAME: esgseed
+      SPRING_DATASOURCE_PASSWORD: esgseed1234
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - esgseed-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  esgseed-network:
+    driver: bridge
+

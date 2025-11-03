@@ -1,12 +1,30 @@
 spring:
+  application:
+    name: api-server
+  
   datasource:
-    url: jdbc:postgresql://localhost:5432/esgseeddb
-    username: esgseed
-    password: esgseed1234
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/esgseeddb}
+    username: ${SPRING_DATASOURCE_USERNAME:esgseed}
+    password: ${SPRING_DATASOURCE_PASSWORD:esgseed1234}
+    driver-class-name: org.postgresql.Driver
+  
   jpa:
     hibernate:
-      ddl-auto: validate   # (테이블 이미 있으니 validate 권장. 개발 중엔 update도 가능)
-    show-sql: true
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:create}  # 테이블 자동 생성/수정
+    show-sql: true          # 콘솔에 SQL 출력
     properties:
       hibernate:
-        format_sql: true
+        format_sql: true    # SQL 예쁘게 정렬 출력
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false     # OSIV 비활성화 (성능 최적화)
+
+# 서버 설정
+server:
+  port: ${SERVER_PORT:8080}
+
+# 로깅 설정
+logging:
+  level:
+    com.sangbepa.api: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE  # 파라미터 바인딩 값 출력
